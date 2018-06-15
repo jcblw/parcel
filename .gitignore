@@ -7,11 +7,9 @@ coverage
 .nyc_output
 .cache
 dist
-lib
 !test/**/node_modules
 .vscode/
 .idea/
-*.min.js
 test/integration/**/target
 test/integration/**/Cargo.lock
 # Logs
