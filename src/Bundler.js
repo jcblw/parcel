@@ -82,7 +82,9 @@ class Bundler extends EventEmitter {
       hmr:
         target === 'node'
           ? false
-          : typeof options.hmr === 'boolean' ? options.hmr : watch,
+          : typeof options.hmr === 'boolean'
+            ? options.hmr
+            : watch,
       https: options.https || false,
       logLevel: isNaN(options.logLevel) ? 3 : options.logLevel,
       mainFile: this.mainFile,
@@ -237,7 +239,10 @@ class Bundler extends EventEmitter {
         this.hmr.emitError(err);
       }
 
-      if (process.env.NODE_ENV === 'production') {
+      if (
+        process.env.NODE_ENV === 'production' ||
+        process.env.NODE_ENV === 'staging'
+      ) {
         process.exitCode = 1;
       } else if (process.env.NODE_ENV === 'test' && !this.hmr) {
         throw err;
