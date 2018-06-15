@@ -61,7 +61,9 @@ class Bundler extends EventEmitter {
 
   normalizeOptions(options) {
     const isProduction =
-      options.production || process.env.NODE_ENV === 'production';
+      options.production ||
+      process.env.NODE_ENV === 'production' ||
+      process.env.NODE_ENV === 'staging';
     const publicURL = options.publicUrl || options.publicURL || '/';
     const watch =
       typeof options.watch === 'boolean' ? options.watch : !isProduction;
@@ -82,9 +84,7 @@ class Bundler extends EventEmitter {
       hmr:
         target === 'node'
           ? false
-          : typeof options.hmr === 'boolean'
-            ? options.hmr
-            : watch,
+          : typeof options.hmr === 'boolean' ? options.hmr : watch,
       https: options.https || false,
       logLevel: isNaN(options.logLevel) ? 3 : options.logLevel,
       mainFile: this.mainFile,
