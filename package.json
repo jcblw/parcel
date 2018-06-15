@@ -1,5 +1,5 @@
 {
-  "name": "@jcblw/parcel-bundler",
+  "name": "parcel-bundler",
   "version": "1.9.0",
   "description": "Blazing fast, zero configuration web application bundler",
   "main": "index.js",
